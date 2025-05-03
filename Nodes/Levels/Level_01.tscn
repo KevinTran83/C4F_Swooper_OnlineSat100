@@ -1,0 +1,97 @@
+[gd_scene load_steps=13 format=3 uid="uid://choruavue7841"]
+
+[ext_resource type="Material" uid="uid://c3hw1r8vkaww" path="res://Materials/Orange.tres" id="1_88uw5"]
+[ext_resource type="Script" path="res://Scripts/Flight.gd" id="2_fnf1h"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1flur"]
+size = Vector3(50, 1, 50)
+
+[sub_resource type="BoxMesh" id="BoxMesh_chkwp"]
+size = Vector3(50, 1, 50)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8xmkh"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8bnfa"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_roq8w"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rfu5f"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5x52w"]
+bounce = 1.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mt4la"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s5kql"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_131eh"]
+
+[node name="Level" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.83114, 0, -0.556064, 0.273058, 0.871128, 0.408136, 0.484403, -0.491056, 0.724029, 0, 0, 0)
+
+[node name="Ground" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_1flur")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+material_override = ExtResource("1_88uw5")
+mesh = SubResource("BoxMesh_chkwp")
+
+[node name="FallingObject" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.54846, 0)
+physics_material_override = SubResource("PhysicsMaterial_8xmkh")
+linear_velocity = Vector3(0, 0, -10)
+angular_velocity = Vector3(0, 3.14159, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="FallingObject"]
+mesh = SubResource("BoxMesh_8bnfa")
+surface_material_override/0 = SubResource("StandardMaterial3D_roq8w")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FallingObject"]
+shape = SubResource("BoxShape3D_rfu5f")
+
+[node name="FallingObject2" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.26755, 5.54846, 0)
+physics_material_override = SubResource("PhysicsMaterial_5x52w")
+angular_velocity = Vector3(3.14159, 3.14159, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="FallingObject2"]
+mesh = SubResource("BoxMesh_8bnfa")
+surface_material_override/0 = SubResource("StandardMaterial3D_roq8w")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FallingObject2"]
+shape = SubResource("BoxShape3D_rfu5f")
+
+[node name="FallingObject3" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.33285, 5.54846, 0)
+physics_material_override = SubResource("PhysicsMaterial_mt4la")
+angular_velocity = Vector3(3.14159, 3.14159, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="FallingObject3"]
+mesh = SubResource("BoxMesh_8bnfa")
+surface_material_override/0 = SubResource("StandardMaterial3D_roq8w")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FallingObject3"]
+shape = SubResource("BoxShape3D_rfu5f")
+
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.36651, 3.02875, 2.73087)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_s5kql")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
+mesh = SubResource("BoxMesh_131eh")
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.459, 5.813)
+
+[node name="Flight" type="Node" parent="Player"]
+script = ExtResource("2_fnf1h")
