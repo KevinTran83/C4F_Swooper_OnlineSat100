@@ -1,8 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://choruavue7841"]
+[gd_scene load_steps=14 format=3 uid="uid://choruavue7841"]
 
 [ext_resource type="Material" uid="uid://c3hw1r8vkaww" path="res://Materials/Orange.tres" id="1_88uw5"]
-[ext_resource type="Script" path="res://Scripts/Flight.gd" id="2_fnf1h"]
-[ext_resource type="Script" path="res://Scripts/Turn.gd" id="3_cmisb"]
+[ext_resource type="PackedScene" uid="uid://dvapgx4ht3kwx" path="res://Nodes/Player.tscn" id="2_b0viq"]
+[ext_resource type="PackedScene" uid="uid://dhi2hsq57djjs" path="res://Nodes/Goal.tscn" id="3_cgo78"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1flur"]
 size = Vector3(50, 1, 50)
@@ -25,10 +25,6 @@ bounce = 1.0
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mt4la"]
 friction = 0.0
 bounce = 1.0
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s5kql"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_131eh"]
 
 [sub_resource type="TorusMesh" id="TorusMesh_udaka"]
 inner_radius = 2.58
@@ -89,25 +85,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_roq8w")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FallingObject3"]
 shape = SubResource("BoxShape3D_rfu5f")
 
-[node name="Player" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.36651, 3.02875, 2.73087)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_s5kql")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
-mesh = SubResource("BoxMesh_131eh")
-
-[node name="Camera3D" type="Camera3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.459, 5.813)
-
-[node name="Flight" type="Node" parent="Player"]
-script = ExtResource("2_fnf1h")
-
-[node name="Turn" type="Node" parent="Player" node_paths=PackedStringArray("mesh")]
-script = ExtResource("3_cmisb")
-mesh = NodePath("../MeshInstance3D")
+[node name="Player" parent="." instance=ExtResource("2_b0viq")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.68753, -5.11934)
@@ -119,3 +97,5 @@ mesh = SubResource("TorusMesh_udaka")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2.41035, 0)
 shape = SubResource("ConcavePolygonShape3D_xx1gj")
+
+[node name="Goal" parent="." instance=ExtResource("3_cgo78")]
