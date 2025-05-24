@@ -1,14 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmdcts3b7ee30"]
+[gd_scene load_steps=6 format=3 uid="uid://bmdcts3b7ee30"]
 
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_42wfr"]
 [ext_resource type="PackedScene" uid="uid://gxewp8hkg4y5" path="res://Nodes/GUI/HUD.tscn" id="1_jxjt2"]
 [ext_resource type="PackedScene" uid="uid://choruavue7841" path="res://Nodes/Levels/Level_01.tscn" id="2_34nap"]
+[ext_resource type="Script" path="res://Scripts/LevelManager.gd" id="3_70r5q"]
+[ext_resource type="PackedScene" uid="uid://b5qr4f6ix6vux" path="res://Nodes/Levels/Level_02.tscn" id="5_sqf75"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_42wfr")
 
 [node name="HUD" parent="." instance=ExtResource("1_jxjt2")]
 
-[node name="LevelContainer" type="Node" parent="."]
+[node name="LevelManager" type="Node" parent="."]
+script = ExtResource("3_70r5q")
+levels = Array[PackedScene]([ExtResource("2_34nap"), ExtResource("5_sqf75")])
 
-[node name="Level" parent="LevelContainer" instance=ExtResource("2_34nap")]
+[connection signal="onDefeat" from="." to="HUD/Defeat" method="set_visible" binds= [true]]
+[connection signal="onVictory" from="." to="HUD/Victory" method="set_visible" binds= [true]]
+
+[editable path="HUD"]

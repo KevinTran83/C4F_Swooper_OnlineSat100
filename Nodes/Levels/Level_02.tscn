@@ -1,8 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://choruavue7841"]
+[gd_scene load_steps=14 format=3 uid="uid://b5qr4f6ix6vux"]
 
-[ext_resource type="Material" uid="uid://c3hw1r8vkaww" path="res://Materials/Orange.tres" id="1_88uw5"]
-[ext_resource type="PackedScene" uid="uid://dvapgx4ht3kwx" path="res://Nodes/Player.tscn" id="2_b0viq"]
-[ext_resource type="PackedScene" uid="uid://dhi2hsq57djjs" path="res://Nodes/Goal.tscn" id="3_cgo78"]
+[ext_resource type="Material" uid="uid://j6ld5kx2rl40" path="res://Materials/Blue.tres" id="1_duc16"]
+[ext_resource type="PackedScene" uid="uid://dvapgx4ht3kwx" path="res://Nodes/Player.tscn" id="2_vnon7"]
+[ext_resource type="PackedScene" uid="uid://dhi2hsq57djjs" path="res://Nodes/Goal.tscn" id="3_8um88"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1flur"]
 size = Vector3(50, 1, 50)
@@ -45,7 +45,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_1flur")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
-material_override = ExtResource("1_88uw5")
+material_override = ExtResource("1_duc16")
 mesh = SubResource("BoxMesh_chkwp")
 
 [node name="FallingObject" type="RigidBody3D" parent="."]
@@ -85,7 +85,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_roq8w")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FallingObject3"]
 shape = SubResource("BoxShape3D_rfu5f")
 
-[node name="Player" parent="." instance=ExtResource("2_b0viq")]
+[node name="Player" parent="." instance=ExtResource("2_vnon7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.029, 2.731)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
@@ -99,5 +99,5 @@ mesh = SubResource("TorusMesh_udaka")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2.41035, 0)
 shape = SubResource("ConcavePolygonShape3D_xx1gj")
 
-[node name="Goal" parent="." instance=ExtResource("3_cgo78")]
+[node name="Goal" parent="." instance=ExtResource("3_8um88")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.66214, -15.3566)
