@@ -34,6 +34,23 @@ theme_override_font_sizes/font_size = 128
 text = "SWOOPED"
 horizontal_alignment = 1
 
+[node name="Level_Next" type="Button" parent="Victory"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -232.497
+offset_top = 181.591
+offset_right = 279.503
+offset_bottom = 245.591
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 32
+text = "Next Level"
+
 [node name="Defeat" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -56,6 +73,23 @@ theme_override_constants/shadow_outline_size = 50
 theme_override_font_sizes/font_size = 128
 text = "CRASHED"
 horizontal_alignment = 1
+
+[node name="Level_Restart" type="Button" parent="Defeat"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -291.104
+offset_top = 190.025
+offset_right = 220.896
+offset_bottom = 254.025
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 32
+text = "Restart Level"
 
 [node name="Score" type="Label" parent="."]
 layout_mode = 1

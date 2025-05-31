@@ -6,10 +6,8 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_no6he"]
 
-[node name="Goal" type="RigidBody3D"]
+[node name="Goal" type="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02389, -8.42422)
-contact_monitor = true
-max_contacts_reported = 5
 script = ExtResource("1_6rprr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

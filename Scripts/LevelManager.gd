@@ -5,6 +5,8 @@ extends Node
 var currentLevel : Node
 var currentLevelNo : int = 0
 
+signal onNextLevel()
+
 func _ready() -> void:
     SpawnLevel()
     
@@ -14,3 +16,6 @@ func SpawnLevel() -> void:
     currentLevel = levels[currentLevelNo].instantiate()
     add_child(currentLevel)
     currentLevelNo += 1
+    currentLevelNo %= levels.size()
+    
+    onNextLevel.emit()

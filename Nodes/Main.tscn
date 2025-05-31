@@ -17,5 +17,7 @@ levels = Array[PackedScene]([ExtResource("2_34nap"), ExtResource("5_sqf75")])
 
 [connection signal="onDefeat" from="." to="HUD/Defeat" method="set_visible" binds= [true]]
 [connection signal="onVictory" from="." to="HUD/Victory" method="set_visible" binds= [true]]
+[connection signal="button_up" from="HUD/Victory/Level_Next" to="LevelManager" method="SpawnLevel"]
+[connection signal="onNextLevel" from="LevelManager" to="HUD" method="hideLabels"]
 
 [editable path="HUD"]

@@ -9,8 +9,16 @@ extends Node
 
 var speed : float
 
+func showMouse() -> void : Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+func hideMouse() -> void : Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
 func _ready() -> void:
-    Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+    hideMouse()
+    
+    var main : Main = get_tree().get_root().get_node("Main")
+    main.onDefeat .connect(showMouse)
+    main.onVictory.connect(showMouse)
+    
     speed = 0
     
 func _process(delta : float) -> void:
